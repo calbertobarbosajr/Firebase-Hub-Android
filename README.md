@@ -1,4 +1,5 @@
-<h1>FireConnect Kotlin MVVM&nbsp;</h1><h2>Project Overview</h2>
+<h1>FireConnect Kotlin MVVM&nbsp;</h1>
+<h2>Project Overview</h2>
 <p>This Android application is a part of my portfolio, developed using the Kotlin programming language. It follows the Model-View-ViewModel (MVVM) architecture pattern and leverages the powerful features of Firebase, including Firebase Storage, Firestore, and Realtime Database.</p>
 <h2>Features</h2>
 <h3>MVVM Architecture</h3>
@@ -49,4 +50,4 @@
 <h2>Contributions</h2>
 <p>Contributions are welcome! Feel free to open issues, propose improvements, or submit pull requests.</p>
 <h2>License</h2>
-<p>This project is licensed under the <a href=" https://www.mit.edu/~amini/LICENSE.md">MIT License</a>.</p>
+<p>This project is licensed under the <a href="https://www.mit.edu/~amini/LICENSE.md">MIT License</a>.</p>
