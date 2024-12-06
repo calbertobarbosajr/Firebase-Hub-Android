@@ -1,20 +1,20 @@
 <h1>FireConnect Kotlin MVVM</h1>
-<h2><strong>Descri&ccedil;&atilde;o do Projeto</strong></h2>
-<p><strong>FireConnect Kotlin MVVM</strong> foi desenvolvido com o objetivo de consolidar as principais funcionalidades do Firebase para Android em um &uacute;nico projeto. Isso permite que futuros projetos reutilizem c&oacute;digo, eliminando a necessidade de reescrever funcionalidades j&aacute; implementadas, economizando tempo e esfor&ccedil;o.</p>
-<p>Este projeto adota o padr&atilde;o de arquitetura <strong>Model-View-ViewModel (MVVM)</strong> para garantir alta reutiliza&ccedil;&atilde;o e modularidade do c&oacute;digo. Apesar da inten&ccedil;&atilde;o inicial de abranger todas as funcionalidades do Firebase, esta vers&atilde;o inclui suporte para:</p>
+<h2><strong>Project Description</strong></h2>
+<p><strong>FireConnect Kotlin MVVM</strong> was developed with the goal of consolidating the main Firebase functionalities for Android into a single project. This allows for future projects to reuse the code, eliminating the need to rewrite features that have already been implemented, saving time and effort.</p>
+<p>This project follows the <strong>Model-View-ViewModel (MVVM)</strong> architecture pattern to ensure high code reuse and modularity. While the initial intention was to include all Firebase functionalities, this version supports:</p>
 <ul>
 <li><strong>Firebase Storage</strong></li>
 <li><strong>Firestore</strong></li>
 <li><strong>Realtime Database</strong></li>
 </ul>
 <blockquote>
-<p><strong>Nota:</strong> Durante o desenvolvimento, optei por enviar o projeto completo para o GitHub em vez de realizar commits incrementais, resultando em um &uacute;nico commit abrangente. Esta vers&atilde;o n&atilde;o inclui testes unit&aacute;rios.</p>
+<p><strong>Note:</strong> During development, I chose to push the complete project to GitHub rather than perform incremental commits, resulting in a single comprehensive commit. This version does not include unit tests.</p>
 </blockquote>
-<p>A escolha pela linguagem <strong>Kotlin</strong>, em vez de Java, foi feita com base na recomenda&ccedil;&atilde;o oficial do Google para o desenvolvimento Android.</p>
+<p>The choice of <strong>Kotlin</strong> over Java was made based on Google's official recommendation for Android development.</p>
 <p>&nbsp;</p>
-<h2><strong>Tecnologias Utilizadas</strong></h2>
+<h2><strong>Technologies Used</strong></h2>
 <ul>
-<li><strong>Kotlin</strong>: Linguagem principal do projeto.</li>
+<li><strong>Kotlin</strong>: Main language of the project.</li>
 <li><strong>Firebase SDK</strong>:
 <ul>
 <li>Firebase Storage</li>
@@ -23,74 +23,103 @@
 <li>Firebase Authentication</li>
 </ul>
 </li>
-<li><strong>Bibliotecas adicionais</strong>:
+<li><strong>Additional Libraries</strong>:
 <ul>
-<li><strong>Glide</strong>: Para carregamento de imagens.</li>
-<li><strong>MaterialSearchView</strong>: Para busca na interface.</li>
-<li><strong>AndroidX Lifecycle ViewModel</strong>: Para implementa&ccedil;&atilde;o do padr&atilde;o MVVM.</li>
-<li><strong>AndroidX Activity KTX</strong>: Para simplificar opera&ccedil;&otilde;es em atividades.</li>
+<li><strong>Glide</strong>: For image loading.</li>
+<li><strong>MaterialSearchView</strong>: For searching within the interface.</li>
+<li><strong>AndroidX Lifecycle ViewModel</strong>: To implement the MVVM pattern.</li>
+<li><strong>AndroidX Activity KTX</strong>: To simplify operations in activities.</li>
 </ul>
 </li>
 </ul>
 <p>&nbsp;</p>
-<h2><strong>Funcionalidades</strong></h2>
-<p>O aplicativo oferece integra&ccedil;&atilde;o direta com os servi&ccedil;os Firebase:</p>
+<h2><strong>Features</strong></h2>
+<p>The app provides direct integration with Firebase services:</p>
 <ul>
-<li><strong>Firebase Storage</strong>: Upload, download e gerenciamento de arquivos.</li>
-<li><strong>Firestore</strong>: Banco de dados NoSQL para armazenamento e sincroniza&ccedil;&atilde;o de dados estruturados.</li>
-<li><strong>Realtime Database</strong>: Sincroniza&ccedil;&atilde;o em tempo real para atualiza&ccedil;&otilde;es instant&acirc;neas em clientes conectados.</li>
+<li><strong>Firebase Storage</strong>: Upload, download, and manage files.</li>
+<li><strong>Firestore</strong>: NoSQL database for storing and syncing structured data.</li>
+<li><strong>Realtime Database</strong>: Real-time synchronization for instant updates across connected clients.</li>
 </ul>
 <p>&nbsp;</p>
-<h2><strong>Passo a Passo de Execu&ccedil;&atilde;o</strong></h2>
-<h3><strong>Pr&eacute;-requisitos</strong></h3>
-<p>Certifique-se de ter os seguintes itens configurados antes de executar o projeto:</p>
+<h2><strong>Setup Instructions</strong></h2>
+<h3><strong>Prerequisites</strong></h3>
+<p>Ensure you have the following configured before running the project:</p>
 <ol>
-<li><strong>Android Studio</strong> instalado.
+<li><strong>Android Studio</strong> installed.
 <blockquote>
-<p><em>(Vers&atilde;o utilizada no desenvolvimento n&atilde;o especificada)</em>.</p>
+<p><em>(The version used during development is unspecified)</em>.</p>
 </blockquote>
 </li>
-<li><strong>Projeto Firebase configurado</strong>.</li>
-<li>Arquivo <code>google-services.json</code> adicionado ao diret&oacute;rio <code>app</code>.</li>
+<li><strong>Firebase project configured</strong>.</li>
+<li>The <code>google-services.json</code> file added to the <code>app</code> directory.</li>
 </ol>
-<h3><strong>Executando o Aplicativo</strong></h3>
+<h3>&nbsp;</h3>
+<h3><strong>Running the Application</strong></h3>
 <ol>
-<li>Clone este reposit&oacute;rio</li>
-</ol>
-<p><code><a href="https://github.com/calbertobarbosajr/Firebase-Hub-Android.git">git clone https://github.com/calbertobarbosajr/FireConnectKotlinMVVM.git</a></code></p>
-<p>&nbsp;</p>
+<li>Clone this repository:
+<div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
+<div class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
+
+<pre>
+<code>git clone https://github.com/calbertobarbosajr/FireConnectKotlinMVVM.git</code>
+</pre>
+
+</div>
+
 <ol>
-<li>Abra o projeto no <strong>Android Studio</strong>.</li>
-<li>Sincronize as depend&ecirc;ncias no Gradle.</li>
-<li>Compile e execute o aplicativo em um emulador ou dispositivo f&iacute;sico.</li>
+<li>Open the project in <strong>Android Studio</strong>.</li>
+<li>Sync the Gradle dependencies.</li>
+<li>Build and run the app on an emulator or physical device.</li>
 </ol>
-<h3><strong>Configura&ccedil;&atilde;o do Firebase</strong></h3>
+<h3><strong>Configuring Firebase</strong></h3>
 <ol>
-<li>Crie um projeto no <a href="https://console.firebase.google.com" target="_new" rel="noopener">Console do Firebase</a>.</li>
-<li>Adicione um aplicativo Android ao projeto Firebase e fa&ccedil;a o download do arquivo <code>google-services.json</code>.</li>
-<li>Coloque o arquivo <code>google-services.json</code> no m&oacute;dulo <code>app</code> do seu projeto Android.</li>
+<li>Create a project in the <a href="https://console.firebase.google.com" target="_new" rel="noopener">Firebase Console</a>.</li>
+<li>Add an Android app to your Firebase project and download the <code>google-services.json</code> file.</li>
+<li>Place the <code>google-services.json</code> file in the <code>app</code> module of your Android project.</li>
 </ol>
-<h3><strong>Depend&ecirc;ncias do Projeto</strong></h3>
-<p>No arquivo <code>build.gradle</code> (Module):</p>
+<h3><strong>Project Dependencies</strong></h3>
+<p>In the <code>build.gradle</code> (Module) file:</p>
+
+<pre>
+<code>
+plugins {
+    id("com.google.gms.google-services") version "4.4.0" apply false
+}
+
+dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("io.gitlab.alexto9090:materialsearchview:1.0.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
+}
+
+</code>
+</pre>
+
+<ol>
+<li>In the <code>build.gradle</code> (Project) file:</li>
+</ol>
+
 <p>&nbsp;</p>
-<p><code>plugins {</code><br /><code>id("com.google.gms.google-services") version "4.4.0" apply false</code><br /><code>}</code></p>
-<p><code>dependencies {</code><br /><code>implementation(platform("com.google.firebase:firebase-bom:32.5.0"))</code><br /><code>implementation("com.google.android.gms:play-services-auth:20.7.0")</code><br /><code>implementation("com.google.firebase:firebase-auth-ktx")</code><br /><code>implementation("com.google.firebase:firebase-database-ktx")</code><br /><code>implementation("com.google.firebase:firebase-storage-ktx")</code><br /><code>implementation("com.google.firebase:firebase-firestore-ktx")</code><br /><code>implementation("com.github.bumptech.glide:glide:4.14.2")</code><br /><code>annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")</code><br /><code>implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")</code><br /><code>implementation("io.gitlab.alexto9090:materialsearchview:1.0.0")</code><br /><code>implementation("androidx.activity:activity-ktx:1.8.2")</code><br /><code>}</code></p>
-<p>No arquivo <code>build.gradle</code> (Project):</p>
-<p>&nbsp;</p>
-<p><code>plugins {</code><br /><code>id("com.google.gms.google-services")</code><br /><code>}</code></p>
-<p><code>android {</code><br /><code>viewBinding { enable = true }</code><br /><code>}</code></p>
-<p><code></code></p>
-<h2><strong>Uso</strong></h2>
-<p>O aplicativo oferece uma interface intuitiva para:</p>
+<h2><strong>Usage</strong></h2>
+<p>The app provides a simple interface to:</p>
 <ul>
-<li>Fazer upload de arquivos para o Firebase Storage.</li>
-<li>Interagir com Firestore para armazenar e consultar dados estruturados.</li>
-<li>Observar atualiza&ccedil;&otilde;es em tempo real com o Firebase Realtime Database.</li>
+<li>Upload files to Firebase Storage.</li>
+<li>Interact with Firestore to store and query structured data.</li>
+<li>Experience real-time updates with Firebase Realtime Database.</li>
 </ul>
+
 <p>&nbsp;</p>
-<h2><strong>Contribui&ccedil;&otilde;es</strong></h2>
-<p>Contribui&ccedil;&otilde;es s&atilde;o bem-vindas! Se voc&ecirc; encontrar problemas, propor melhorias ou desejar colaborar, sinta-se &agrave; vontade para abrir <strong>Issues</strong> ou enviar <strong>Pull Requests</strong>.</p>
+<h2><strong>Contributions</strong></h2>
+<p>Contributions are welcome! If you find issues, suggest improvements, or wish to collaborate, feel free to open <strong>Issues</strong> or submit <strong>Pull Requests</strong>.</p>
+
 <p>&nbsp;</p>
-<h2><strong>Licen&ccedil;a</strong></h2>
-<p>Este projeto est&aacute; licenciado sob a <strong>Licen&ccedil;a MIT</strong>. Consulte o texto completo da licen&ccedil;a em <a href="https://www.mit.edu/~amini/LICENSE.md" target="_new" rel="noopener">LICENSE.md</a>.</p>
-<p><code></code></p>
+<h2><strong>License</strong></h2>
+<p>This project is licensed under the <strong>MIT License</strong>. Please refer to the full license text in <a href="https://www.mit.edu/~amini/LICENSE.md" target="_new" rel="noopener">LICENSE.md</a>.</p>
