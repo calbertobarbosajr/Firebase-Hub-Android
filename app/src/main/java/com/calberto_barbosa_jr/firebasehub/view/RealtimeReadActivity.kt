@@ -28,7 +28,6 @@ class RealtimeReadActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         viewModel = ViewModelProvider(this).get(RealtimeReadViewModel::class.java)
 
         // Observa as atualizações no usuário e na mensagem de erro
@@ -62,4 +61,5 @@ class RealtimeReadActivity : AppCompatActivity() {
         super.onStop()
         viewModel.detachDatabaseListener()
     }
+
 }

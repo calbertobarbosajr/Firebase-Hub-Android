@@ -85,7 +85,6 @@ class StorageUploadActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         setupObservers()
         initializeViews()
         requestPermissions()
@@ -118,14 +117,6 @@ class StorageUploadActivity : AppCompatActivity() {
         )
     }
 
-    fun buttonUpload(view: View) {
-        val user = FirebaseAuth.getInstance().currentUser
-        user?.let {
-            val uid: String = user.uid
-            storageViewModel.uploadImages(uid, imageUris)
-        }
-    }
-
     fun showImage1(view: View) {
         selectedImageView = showImage1
         showCameraGalleryDialog()
@@ -139,6 +130,14 @@ class StorageUploadActivity : AppCompatActivity() {
     fun showImage3(view: View) {
         selectedImageView = showImage3
         showCameraGalleryDialog()
+    }
+
+    fun buttonUpload(view: View) {
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val uid: String = user.uid
+            storageViewModel.uploadImages(uid, imageUris)
+        }
     }
 
     private fun showCameraGalleryDialog() {
@@ -179,16 +178,16 @@ class StorageUploadActivity : AppCompatActivity() {
 
     private fun obterImagemCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        val diretorio =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-        val nomeImagem = "$diretorio/Name_${System.currentTimeMillis()}.jpg"
-        val file = File(nomeImagem)
-        val autorizacao = "com.calberto_barbosa_jr.fireconnectkotlinmvvm"
+        val diretorio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+        val nomeImagem = "Name_${System.currentTimeMillis()}.jpg"
+        val file = File(diretorio, nomeImagem)
+        val autorizacao = "com.calberto_barbosa_jr.firebasehub.fileprovider" // Certifique-se de usar o mesmo nome configurado no seu Manifest.
         val uriImagem = FileProvider.getUriForFile(baseContext, autorizacao, file)
         uriImage = uriImagem
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uriImage)
         getCameraImage.launch(intent)
     }
+
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -253,11 +252,6 @@ class StorageUploadActivity : AppCompatActivity() {
         private const val PERMISSION_CAMERA_CODE = 1001
     }
 
-
-
-
-
-
     //===============================================================================================
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -284,6 +278,5 @@ class StorageUploadActivity : AppCompatActivity() {
             .create()
             .show()
     }
-
 
 }

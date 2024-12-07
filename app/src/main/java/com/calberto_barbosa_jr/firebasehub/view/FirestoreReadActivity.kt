@@ -28,7 +28,6 @@ class FirestoreReadActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         viewModel = ViewModelProvider(this).get(FirestoreReadViewModel::class.java)
 
         viewModel.userLiveData.observe(this, Observer { user ->

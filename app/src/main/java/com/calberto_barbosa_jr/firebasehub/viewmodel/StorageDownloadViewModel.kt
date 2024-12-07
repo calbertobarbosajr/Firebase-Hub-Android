@@ -1,4 +1,5 @@
 package com.calberto_barbosa_jr.firebasehub.viewmodel
+
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast

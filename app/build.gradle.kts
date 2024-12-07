@@ -36,6 +36,7 @@ android {
         jvmTarget = "11"
     }
 
+
     viewBinding { enable = true }
     testOptions {
         unitTests {

@@ -28,7 +28,6 @@ class RealtimeSaveActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         viewModel = ViewModelProvider(this).get(RealtimeViewModel::class.java)
 
         // Observa as atualizações na mensagem e atualiza a interface do usuário
@@ -66,17 +65,18 @@ class RealtimeSaveActivity : AppCompatActivity() {
         return updates
     }
 
-    fun buttonSaveFirestore(view: View) {
+    fun buttonSaveRealtime(view: View) {
         val user = getUserFromInputFields()
         viewModel.addDocumentToRealtimeDatabase(user)
     }
 
-    fun buttonUpdateFirestore(view: View) {
+    fun buttonUpdateRealtime(view: View) {
         val updates = getFieldUpdates()
         viewModel.updateDocumentInRealtimeDatabase(updates)
     }
 
-    fun buttonDeleteFirestore(view: View) {
+    fun buttonDeleteRealtime(view: View) {
         viewModel.deleteDocumentInRealtimeDatabase()
     }
+
 }

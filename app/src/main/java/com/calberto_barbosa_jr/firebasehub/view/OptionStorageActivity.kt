@@ -35,5 +35,4 @@ class OptionStorageActivity : AppCompatActivity() {
         val intent = Intent(this, StorageDownloadActivity::class.java)
         startActivity(intent)
     }
-
 }
