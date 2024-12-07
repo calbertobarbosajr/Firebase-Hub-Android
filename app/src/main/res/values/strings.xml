@@ -1,7 +1,3 @@
 <resources>
-    <string name="app_name">Fire Connect Kotlin MVVM</string>
-
-
-    <string name="permissao_concedida">Permissão concedida, faça o que precisa ser feito</string>
-    <string name="permissao_nao_concedida">Permissão não concedida, trate conforme necessário</string>
+    <string name="app_name">Firebase Hub</string>
 </resources>

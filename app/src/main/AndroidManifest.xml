@@ -26,43 +26,46 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FireConnectKotlinMVVM"
+        android:theme="@style/Theme.FirebaseHub"
         tools:targetApi="31">
         <activity
-            android:name=".activity.RealtimeReadActivity"
+            android:name=".view.FirestoreReadActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RealtimeSaveActivity"
+            android:name=".view.FirestoreSaveActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FirestoreSaveActivity"
+            android:name=".view.OptionFirestoreActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FirestoreReadActivity"
+            android:name=".view.OptionRealtimeDatabaseActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OptionRealtimeDatabaseActivity"
+            android:name=".view.OptionStorageActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OptionFirestoreActivity"
+            android:name=".view.RealtimeReadActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.OptionStorageActivity"
+            android:name=".view.RealtimeSaveActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.StorageUploadActivity"
+            android:name=".view.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.StorageDownloadActivity"
+            android:name=".view.StorageDownloadActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RegistrationActivity"
+            android:name=".view.StorageUploadActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".view.AuthenticationActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.AuthenticationActivity"
+            android:name=".view.HubActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,7 +76,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.calberto_barbosa_jr.fireconnectkotlinmvvm"
+            android:authorities="com.calberto_barbosa_jr.firebasehub"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

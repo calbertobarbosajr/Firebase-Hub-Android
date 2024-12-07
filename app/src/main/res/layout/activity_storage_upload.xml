@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:tag="image_uri"
-    tools:context=".activity.StorageUploadActivity">
+    tools:context=".view.StorageUploadActivity">
 
     <ImageView
         android:id="@+id/showImage1"
