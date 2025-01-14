@@ -59,7 +59,7 @@
 <li>Clone this repository:
 <div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950">
 <div class="flex items-center text-token-text-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md h-9 bg-token-sidebar-surface-primary dark:bg-token-main-surface-secondary select-none">
-<pre><code>git clone https://github.com/calbertobarbosajr/FireConnectKotlinMVVM.git</code>
+<pre><code>git clone https://github.com/calbertobarbosajr/Firebase-Hub-Android.git</code>
 </pre>
 </div>
 <ol>

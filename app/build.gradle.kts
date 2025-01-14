@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.calberto_barbosa_jr.firebasehub"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.calberto_barbosa_jr.firebasehub"
@@ -36,12 +36,11 @@ android {
         jvmTarget = "11"
     }
 
-
     viewBinding { enable = true }
     testOptions {
         unitTests {
-            isReturnDefaultValues = true // Ignore non-mocked methods
-            isIncludeAndroidResources = true // Includes Android features for unit testing
+            isReturnDefaultValues = true // Ignora métodos não mockados
+            isIncludeAndroidResources = true // Inclui recursos Android para testes de unidade
         }
     }
 }
@@ -84,10 +83,12 @@ dependencies {
     // Tests
 
     // Mockito
+    //implementation ("org.mockito:mockito-core:4.0.0")
     testImplementation ("org.mockito:mockito-core:3.11.2")
     testImplementation("io.mockk:mockk:1.13.12")
     testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-alpha03@jar")
     // https://github.com/mockito/mockito-kotlin
+    //testImplementation ("org.mockito.kotlin:mockito-kotlin:5.4.0")
     testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
     testImplementation ("org.mockito:mockito-inline:3.11.2")
 
@@ -98,20 +99,19 @@ dependencies {
     //robolectric
     testImplementation ("org.robolectric:robolectric:4.10")
 
+
     implementation ("androidx.test:core:1.5.0")
+    // Common utilities (application side)
     implementation ("androidx.test:rules:1.4.0")
     implementation ("androidx.test:runner:1.4.0")
-    //implementation ("com.google.firebase:firebase-common")
+    implementation ("com.google.firebase:firebase-common")
 
-    //implementation ("com.google.truth:truth:1.0.1")
+    implementation ("com.google.truth:truth:1.0.1")
 
-    /*
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
     implementation ("androidx.compose.ui:ui:1.5.0")
     implementation ("androidx.compose.material3:material3:1.2.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
-
-     */
 
     testImplementation ("io.insert-koin:koin-test:4.0.0")
     testImplementation ("io.insert-koin:koin-test-junit4:4.0.0")

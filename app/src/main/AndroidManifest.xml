@@ -9,8 +9,12 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 
@@ -25,40 +29,34 @@
         android:theme="@style/Theme.FirebaseHub"
         tools:targetApi="31">
         <activity
-            android:name=".view.FirestoreSaveActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.FirestoreReadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.OptionFirestoreActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.RealtimeReadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.RealtimeSaveActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.OptionRealtimeDatabaseActivity"
+            android:name=".view.StorageUploadActivity"
             android:exported="false" />
         <activity
             android:name=".view.StorageDownloadActivity"
             android:exported="false" />
         <activity
-            android:name=".view.StorageUploadActivity"
+            android:name=".view.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".view.OptionStorageActivity"
             android:exported="false" />
         <activity
-            android:name=".view.RegistrationActivity"
+            android:name=".view.OptionRealtimeDatabaseActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AuthenticationActivity"
+            android:name=".view.OptionFirestoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".view.HubActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.FirestoreSaveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.FirestoreReadActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
@@ -70,6 +68,18 @@
             </intent-filter>
         </activity>
 
+        <!--
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.calberto_barbosa_jr.firebasehub"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider" />
+        </provider>
+        -->
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.calberto_barbosa_jr.firebasehub.fileprovider"
@@ -79,6 +89,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider" />
         </provider>
+
+
     </application>
 
 </manifest>

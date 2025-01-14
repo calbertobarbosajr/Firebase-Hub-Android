@@ -7,15 +7,16 @@ import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 
-class StorageUploadRepository(private val storage: FirebaseStorage, private val context: Context) {
+/*
+class StorageUploadRepository(
+    private val storage: FirebaseStorage,
+    private val context: Context,
+    private val imageNamingStrategy: ImageNamingStrategy // Recebe a estratégia como parâmetro
+) {
     suspend fun uploadImage(uid: String, index: Int, uri: Uri): String? {
         try {
             val reference = storage.reference.child("images").child(uid)
-            //val imageName = reference.child("Name"+ System.currentTimeMillis() + ".jpg")
-            //val imageName = reference.child("Name_${System.currentTimeMillis()}_${UUID.randomUUID()}.jpg")
-            //val nome_imagem = reference.child("Name_$index.jpg")
-            val nome_imagem = reference.child("Name"+ System.currentTimeMillis() + ".jpg")
-
+            val nomeImagem = reference.child(imageNamingStrategy.generateImageName(index))
 
             val bytes = ByteArrayOutputStream()
             val inputStream = context.contentResolver.openInputStream(uri)
@@ -30,12 +31,12 @@ class StorageUploadRepository(private val storage: FirebaseStorage, private val 
 
             val byteArray = bytes.toByteArray()
 
-            val uploadTask = nome_imagem.putBytes(byteArray)
+            val uploadTask = nomeImagem.putBytes(byteArray)
             val downloadUri = uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
                     task.exception?.let { throw it }
                 }
-                nome_imagem.downloadUrl
+                nomeImagem.downloadUrl
             }.await()
 
             return downloadUri.toString()
@@ -45,3 +46,5 @@ class StorageUploadRepository(private val storage: FirebaseStorage, private val 
         }
     }
 }
+
+ */

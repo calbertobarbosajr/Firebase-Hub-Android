@@ -2,12 +2,11 @@ package com.calberto_barbosa_jr.firebasehub.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.calberto_barbosa_jr.firebasehub.R
-import android.view.View
 import com.calberto_barbosa_jr.firebasehub.databinding.ActivityOptionFirestoreBinding
 
 class OptionFirestoreActivity : AppCompatActivity() {
@@ -19,7 +18,7 @@ class OptionFirestoreActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityOptionFirestoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -35,5 +34,4 @@ class OptionFirestoreActivity : AppCompatActivity() {
         val intent = Intent(this, FirestoreSaveActivity::class.java)
         startActivity(intent)
     }
-
 }

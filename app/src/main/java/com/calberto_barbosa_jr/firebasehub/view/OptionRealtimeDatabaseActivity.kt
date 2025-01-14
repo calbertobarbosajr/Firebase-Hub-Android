@@ -1,13 +1,12 @@
 package com.calberto_barbosa_jr.firebasehub.view
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.calberto_barbosa_jr.firebasehub.R
-import android.view.View
 import com.calberto_barbosa_jr.firebasehub.databinding.ActivityOptionRealtimeDatabaseBinding
 
 class OptionRealtimeDatabaseActivity : AppCompatActivity() {
@@ -26,14 +25,6 @@ class OptionRealtimeDatabaseActivity : AppCompatActivity() {
         }
     }
 
-    fun buttonRealTimeRead(view: View) {
-        val intent = Intent(this, RealtimeReadActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun buttonRealTimeSave(view: View) {
-        val intent = Intent(this, RealtimeSaveActivity::class.java)
-        startActivity(intent)
-    }
-
+    fun buttonRealtimeRead(view: View) {}
+    fun buttonRealtimeSave(view: View) {}
 }

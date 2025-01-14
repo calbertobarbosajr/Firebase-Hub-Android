@@ -13,7 +13,6 @@
         android:layout_width="180dp"
         android:layout_height="170dp"
         android:layout_marginBottom="16dp"
-        android:onClick="showImage1"
         app:layout_constraintBottom_toTopOf="@+id/showImage2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +25,6 @@
         android:layout_width="180dp"
         android:layout_height="170dp"
         android:layout_marginBottom="16dp"
-        android:onClick="showImage2"
         app:layout_constraintBottom_toTopOf="@+id/showImage3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +36,7 @@
         android:layout_width="180dp"
         android:layout_height="170dp"
         android:layout_marginBottom="16dp"
-        android:onClick="showImage3"
-        app:layout_constraintBottom_toTopOf="@+id/button9"
+        app:layout_constraintBottom_toTopOf="@+id/uploadButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showImage2"
@@ -47,7 +44,7 @@
 
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/uploadButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

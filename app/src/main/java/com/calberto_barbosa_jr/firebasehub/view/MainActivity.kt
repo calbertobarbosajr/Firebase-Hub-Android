@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     private fun abrirAutenticacao() {
         // Ocultar ProgressBar antes de abrir a nova Activity
         binding.progressBar.visibility = android.view.View.GONE
-        val i = Intent(this, AuthenticationActivity::class.java)
+        val i = Intent(this, LoginActivity::class.java)
         startActivity(i)
         finish()
     }
