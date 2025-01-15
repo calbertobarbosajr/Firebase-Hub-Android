@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
 
     id("com.google.gms.google-services")
+    id("kotlin-kapt") // Add this line
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -52,6 +54,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -115,4 +119,8 @@ dependencies {
 
     testImplementation ("io.insert-koin:koin-test:4.0.0")
     testImplementation ("io.insert-koin:koin-test-junit4:4.0.0")
+
+
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1") // Add this line
 }

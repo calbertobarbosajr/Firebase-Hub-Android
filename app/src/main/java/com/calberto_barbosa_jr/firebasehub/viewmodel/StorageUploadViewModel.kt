@@ -1,55 +1,76 @@
 package com.calberto_barbosa_jr.firebasehub.viewmodel
 
 import android.net.Uri
+import android.widget.ImageView
+import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.calberto_barbosa_jr.firebasehub.helper.PermissionManager
+import com.calberto_barbosa_jr.firebasehub.storage.UIState
+import com.calberto_barbosa_jr.firebasehub.repository.StorageUploadRepository
+import com.calberto_barbosa_jr.firebasehub.storage.StoragePathProvider
+import com.calberto_barbosa_jr.firebasehub.storage.UploadStrategy
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-/*
-class StorageUploadViewModel(
-    private val repository: StorageUploadRepository,
-    val permissionManager: PermissionManager
+
+@HiltViewModel
+class StorageUploadViewModel @Inject constructor(
+    private val repository: StorageUploadRepository
 ) : ViewModel() {
 
+    private val _uiState = MutableLiveData<UIState>()
+    val uiState: LiveData<UIState> = _uiState
 
-    private val _uploadStatus = MutableLiveData<Boolean>()
-    val uploadStatus: LiveData<Boolean> get() = _uploadStatus
+    private val imageUris = mutableSetOf<Uri>()
+    var selectedImageView: ImageView? = null
+        private set
+    private var currentUri: Uri? = null
 
-    private val _permissionRequestNeeded = MutableLiveData<Boolean>()
-    val permissionRequestNeeded: LiveData<Boolean> get() = _permissionRequestNeeded
+    fun onImageSelected(uri: Uri) {
+        currentUri = uri
+        imageUris.add(uri)
+        _uiState.value = UIState.ImageLoaded(uri)
+    }
 
-    private val maxUploadCount = 15
-
-    fun checkPermissions(permissions: Array<String>) {
-        if (permissionManager.hasPermissions(permissions)) {
-            // Permissões já concedidas, continue com o fluxo de upload
-        } else {
-            _permissionRequestNeeded.postValue(true)  // Notifica a Activity que precisa solicitar permissões
+    fun onImageCaptured() {
+        currentUri?.let {
+            imageUris.add(it)
+            _uiState.value = UIState.ImageLoaded(it)
+        } ?: run {
+            _uiState.value = UIState.Error("Failed to process the captured image")
         }
     }
 
-    fun uploadImages(uid: String, imageUris: List<Uri>) {
-        viewModelScope.launch {
-            try {
-                val imagesToUpload = imageUris.take(maxUploadCount)
-                val results = imagesToUpload.mapIndexed { index, uri ->
-                    repository.uploadImage(uid, index, uri)
-                }
+    fun onImageSelectedForDisplay(imageView: ImageView) {
+        selectedImageView = imageView
+    }
 
-                if (results.all { it != null }) {
-                    _uploadStatus.postValue(true)
-                } else {
-                    _uploadStatus.postValue(false)
+    fun openCamera(cameraLauncher: ActivityResultLauncher<Uri>, pathProvider: StoragePathProvider) {
+        currentUri = repository.createImageFile(pathProvider)?.let { file ->
+            repository.getFileProviderUri(file)
+        }
+        currentUri?.let { cameraLauncher.launch(it) } ?: run {
+            _uiState.value = UIState.Error("Failed to create file for the image")
+        }
+    }
+
+    fun uploadImages(pathProvider: StoragePathProvider) {
+        if (imageUris.isEmpty()) {
+            _uiState.value = UIState.Error("No images selected")
+            return
+        }
+
+        viewModelScope.launch {
+            repository.uploadImages(imageUris.toList(), pathProvider) { result ->
+                result.onSuccess { imageUrl ->
+                    _uiState.value = UIState.UploadSuccess(imageUrl)
+                }.onFailure {
+                    _uiState.value = UIState.Error("Upload failed: ${it.message}")
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                _uploadStatus.postValue(false)
             }
         }
     }
 }
-
- */
