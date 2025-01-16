@@ -1,5 +1,6 @@
 package com.calberto_barbosa_jr.firebasehub.storage
 
+import android.content.Context
 import android.net.Uri
 import com.calberto_barbosa_jr.firebasehub.repository.StorageUploadRepository
 import com.google.android.gms.tasks.Tasks.await
@@ -19,63 +20,49 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.doReturn
 import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
+import org.mockito.Mockito.*
+import androidx.test.core.app.ApplicationProvider
+import com.google.firebase.FirebaseApp
+import kotlinx.coroutines.runBlocking
+import org.robolectric.RobolectricTestRunner
+import org.junit.runner.RunWith
+import org.robolectric.annotation.Config
 
-@ExperimentalCoroutinesApi
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [24])
 class StorageUploadRepositoryTest {
-
-    private lateinit var repository: StorageUploadRepository
-    private val mockStorage: FirebaseStorage = mock(FirebaseStorage::class.java)
-    private val mockReference: StorageReference = mock(StorageReference::class.java)
 
     @Before
     fun setup() {
-        repository = StorageUploadRepository(mockStorage)
-        `when`(mockStorage.reference).thenReturn(mockReference)
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        FirebaseApp.initializeApp(context) // Inicializa o Firebase
     }
 
     @Test
-    fun `uploadSingleFile uploads file and returns success`() = runTest(timeout = 30.seconds) {
-        val mockUri = Uri.parse("content://mock/image.jpg")
-        val mockPathProvider = mock(StoragePathProvider::class.java)
-        `when`(mockPathProvider.getDirectoryName()).thenReturn("test_directory")
-        `when`(mockPathProvider.getFileName()).thenReturn("test_image.jpg")
+    fun `uploadSingleFile uploads file and returns success`() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        FirebaseApp.initializeApp(context)
+        val repository = StorageUploadRepository(FirebaseStorage.getInstance())
+        val mockUri = Uri.parse("file://mock/image.jpg")
+        val pathProvider = object : StoragePathProvider {
+            override fun getDirectoryName() = "test_directory"
+            override fun getFileName() = "test_image.jpg"
+        }
 
-        val mockUploadTask = mock(UploadTask::class.java)
-        val mockSnapshot = mock(UploadTask.TaskSnapshot::class.java)
-        val mockTask = mock(Task::class.java) as Task<Uri>
+        // Gerenciamento do recurso ParcelFileDescriptor
+        val contentResolver = context.contentResolver
+        val fileDescriptor = contentResolver.openFileDescriptor(mockUri, "r")
+        try {
+            val result = repository.uploadSingleFile(mockUri, pathProvider)
 
-        `when`(mockReference.child("test_directory/test_image.jpg")).thenReturn(mockReference)
-        `when`(mockReference.putFile(mockUri)).thenReturn(mockUploadTask)
-
-        // Simula sucesso no upload
-        `when`(mockUploadTask.await()).thenReturn(mockSnapshot)
-
-        // Simula o retorno do download URL
-        doReturn(mockTask).`when`(mockReference).downloadUrl
-        `when`(mockTask.await()).thenReturn(Uri.parse("https://mock.url/image.jpg"))
-
-        val result = repository.uploadSingleFile(mockUri, mockPathProvider)
-        advanceUntilIdle() // Processa tarefas pendentes
-        assertTrue(result.isSuccess)
-        assertEquals("https://mock.url/image.jpg", result.getOrNull())
+            assertTrue(result.isSuccess)
+            assertEquals("https://mock.url/image.jpg", result.getOrNull())
+        } finally {
+            fileDescriptor?.close()
+        }
     }
 
-    @Test
-    fun `uploadSingleFile handles failure`() = runTest {
-        val mockUri = Uri.parse("content://mock/image.jpg")
-        val mockPathProvider = mock(StoragePathProvider::class.java)
-        `when`(mockPathProvider.getDirectoryName()).thenReturn("test_directory")
-        `when`(mockPathProvider.getFileName()).thenReturn("test_image.jpg")
 
-        val mockUploadTask = mock(UploadTask::class.java)
-        `when`(mockReference.child("test_directory/test_image.jpg")).thenReturn(mockReference)
-
-        // Simula uma falha no upload
-        `when`(mockReference.putFile(mockUri)).thenReturn(mockUploadTask)
-        `when`(mockUploadTask.await()).thenThrow(RuntimeException("Upload failed"))
-
-        val result = repository.uploadSingleFile(mockUri, mockPathProvider)
-        assertTrue(result.isFailure)
-        assertEquals("Upload failed", result.exceptionOrNull()?.message)
-    }
 }

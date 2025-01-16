@@ -45,6 +45,11 @@ android {
             isIncludeAndroidResources = true // Inclui recursos Android para testes de unidade
         }
     }
+
+    tasks.withType<Test> {
+        jvmArgs("-XX:+EnableDynamicAgentLoading")
+    }
+
 }
 
 dependencies {
@@ -123,4 +128,7 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1") // Add this line
+
+    //testImplementation ("com.google.dagger:hilt-android-testing:2.44")
+    //kaptTest ("com.google.dagger:hilt-compiler:2.44")
 }
